@@ -16,6 +16,7 @@ namespace PartsUnlimited
             container.RegisterType<IOrdersQuery, OrdersQuery>();
             container.RegisterType<IRaincheckQuery, RaincheckQuery>();
             container.RegisterType<IRecommendationEngine, AzureMLFrequentlyBoughtTogetherRecommendationEngine>();
+            container.RegisterType<IShippingTaxCalculator, DefaultShippingTaxCalculator>();
             container.RegisterType<ITelemetryProvider, TelemetryProvider>();
             container.RegisterType<IProductSearch, StringContainsProductSearch>();
 

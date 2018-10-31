@@ -4,7 +4,6 @@ using System.Security.Claims;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
-using Microsoft.AspNet.SignalR;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.DataProtection;
@@ -32,7 +31,7 @@ namespace PartsUnlimited
 
             ConfigureCookieAuth(app);
             ConfigureLoginProviders(app);
-            ConfigureSignalR(app);
+            //ConfigureSignalR(app);
 
             var userManager = CreateUserManager(null, (PartsUnlimitedContext)Global.UnityContainer.Resolve<IPartsUnlimitedContext>());
             CreateAdminUser(userManager);
@@ -108,14 +107,14 @@ namespace PartsUnlimited
             }
         }
 
-        private static void ConfigureSignalR(IAppBuilder app)
-        {
-            var hubConfig = new HubConfiguration
-            {
-                Resolver = new SignalRDependencyResolver()
-            };
-            app.MapSignalR(hubConfig);
-        }
+        //private static void ConfigureSignalR(IAppBuilder app)
+        //{
+        //    var hubConfig = new HubConfiguration
+        //    {
+        //        Resolver = new SignalRDependencyResolver()
+        //    };
+        //    app.MapSignalR(hubConfig);
+        //}
 
         private static SignInManager<ApplicationUser, string> CreateSignInManager(IdentityFactoryOptions<SignInManager<ApplicationUser, string>> options, IOwinContext context)
         {

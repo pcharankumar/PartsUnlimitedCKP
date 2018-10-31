@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using PartsUnlimited.Models;
+using System;
 
 namespace PartsUnlimited.ProductSearch
 {
@@ -15,14 +16,37 @@ namespace PartsUnlimited.ProductSearch
             _context = context;
         }
 
-        public async Task<IEnumerable<Product>> Search(string query)
+           public async Task<IEnumerable<Product>> Search(string query)
         {
-            var lowercase_query = query.ToLower();
-
-            var q = _context.Products
-                .Where(p => p.Title.ToLower().Contains(lowercase_query));
-
-            return await q.ToListAsync();
+            try
+            {
+                var cleanQuery = Depluralize(query);
+                var q = _context.Products
+                       .Where(p => p.Title.ToLower().Contains(cleanQuery));
+                return await q.ToListAsync();
+                
+            }
+            catch
+            {
+                return new List<Product>();
+            }
         }
+        public string Depluralize(string query)
+        {
+            if (query.EndsWith("ies"))
+            {
+                query = query.Substring(0, query.Length - 3) + "y";
+            }
+            else if (query.EndsWith("es"))
+            {
+                query = query.Substring(0, query.Length - 1);
+            }
+            else if (query.EndsWith("s"))
+            {
+                query = query.Substring(1, query.Length);
+            }
+            return query.ToLowerInvariant();
+        }
+
     }
 }
