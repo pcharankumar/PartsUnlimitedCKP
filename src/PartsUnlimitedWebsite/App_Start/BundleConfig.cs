@@ -11,11 +11,11 @@ namespace PartsUnlimited
                     "~/Scripts/jquery-{version}.js",
                     "~/Scripts/jquery-ui-{version}.js"));
             
-            bundles.Add(new ScriptBundle("~/bundles/jquery.validate").Include(
+            bundles.Add(new ScriptBundle("~/bundles/jquery-validate").Include(
                     "~/Scripts/jquery.validate.js",
                     "~/Scripts/jquery.validate.unobtrusive.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery.zoom").Include(
+            bundles.Add(new ScriptBundle("~/bundles/jquery-zoom").Include(
                     "~/Scripts/jquery.zoom.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -25,12 +25,11 @@ namespace PartsUnlimited
                     "~/Scripts/bootstrap.js"));
 
 
-            bundles.Add(new ScriptBundle("~/bundles/signalr").Include(
-                    "~/Scripts/jquery.signalR-{version}.js",
-                    "~/signalr/hubs"));
+            //bundles.Add(new ScriptBundle("~/bundles/signalr").Include(
+            //        "~/Scripts/jquery.signalR-{version}.js",
+            //        "~/signalr/hubs"));
 
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
-                    "~/Scripts/NewStoreArrivals.js",
                     "~/Scripts/UI-Initialization.js",
                     "~/Scripts/Recommendations.js"));
 

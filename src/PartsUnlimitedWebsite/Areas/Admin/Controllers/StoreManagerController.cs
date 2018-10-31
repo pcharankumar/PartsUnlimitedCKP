@@ -6,8 +6,6 @@ using System.Runtime.Caching;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using Microsoft.AspNet.SignalR;
-using PartsUnlimited.Hubs;
 using PartsUnlimited.Models;
 using PartsUnlimited.ViewModels;
 
@@ -122,8 +120,8 @@ namespace PartsUnlimited.Areas.Admin.Controllers
                 db.Products.Add(product);
                 await db.SaveChangesAsync(CancellationToken.None);
 
-                var annoucementHub = GlobalHost.ConnectionManager.GetHubContext<AnnouncementHub>();
-                annoucementHub.Clients.All.announcement(new ProductData() { Title = product.Title, Url = Url.Action("Details", "Store", new { id = product.ProductId }) });
+                //var annoucementHub = GlobalHost.ConnectionManager.GetHubContext<AnnouncementHub>();
+                //annoucementHub.Clients.All.announcement(new ProductData() { Title = product.Title, Url = Url.Action("Details", "Store", new { id = product.ProductId }) });
                 
                 MemoryCache.Default.Remove("latestProduct");
                 return RedirectToAction("Index");
