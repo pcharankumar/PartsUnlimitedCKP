@@ -126,6 +126,7 @@ public ActionResult Recomendations()
 
             return View();
         }
+
         private List<Product> GetNewProducts(int count)
         {
             return _db.Products
