@@ -1,11 +1,11 @@
 #Declare Variaqbles for files
 $Date = (Get-Date).ToString("yyyyMMdd-HHmmss")
-$FilePath = "D:\GiecoDemo\SonarReports\"
+$FilePath = "PartsUnlimitedCKP/"
 $FileName=$FilePath + "SonarVSTSAnalysisPR" + "_" + $Date + ".xlsx"
 $LineSpace = "`r`n"
-$TemphtmlFile="D:\GiecoDemo\SonarReports\temp.html"
+$TemphtmlFile="PartsUnlimitedCKP/temp.html"
 $DataValidation = ""
-$EmailExcelPath="D:\GiecoDemo\GetMail.xlsx"
+$EmailExcelPath="PartsUnlimitedCKP/GetMail.xlsx"
 
 #Declare Mail Variables
 $Username = "jenkins@primesoft.net";
