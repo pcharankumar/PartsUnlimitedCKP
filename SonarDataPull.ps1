@@ -39,7 +39,7 @@ $portno="587"
         $IssuesCheckData = (Invoke-WebRequest $BugURI -UseBasicParsing | select -ExpandProperty content | ConvertFrom-Json).paging.total
 
         #Check Pages Count
-        $IssuesPageIndex = (Invoke-WebRequest $BugURI | select -ExpandProperty content | ConvertFrom-Json).paging.pageSize
+        $IssuesPageIndex = (Invoke-WebRequest $BugURI -UseBasicParsing  | select -ExpandProperty content | ConvertFrom-Json).paging.pageSize
         $PageCount=[math]::ceiling($IssuesCheckData/$IssuesPageIndex)
         #$PageCount
 
@@ -60,7 +60,7 @@ $portno="587"
             while ($Count -le $PageCount) 
             {
                 $BugURI = "http://192.168.5.7:9000/api/issues/search?projects=SonarVSTSAnalysisPR3&resolved=false&types=BUG,VULNERABILITY,CODE_SMELL&fmt=json&ps=500&p=$Count"
-                $BugContent += Invoke-WebRequest $BugURI | select -ExpandProperty content | ConvertFrom-Json 
+                $BugContent += Invoke-WebRequest $BugURI -UseBasicParsing | select -ExpandProperty content | ConvertFrom-Json 
                 $count++
             }
 
